@@ -12,6 +12,6 @@ FROM people;
 ```
 
 DISTINCT	selecciona solo los distintos
-COUNT		cuenta cuántos "records" hay (registros, es d ecir filas)
+COUNT		cuenta cuántos "records" hay (registros, es decir filas)
 
 
