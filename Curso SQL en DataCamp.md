@@ -9,8 +9,9 @@ Los comandos se escriben en mayúsculas, una consulta tiene la forma general:
 SELECT COUNT(*)
 FROM people;
 ```
-DISTINCT	selecciona solo los distintos
-COUNT		cuenta cuántos "records" hay (registros, es decir filas)
+DISTINCT	selecciona solo los distintos  
+COUNT		cuenta cuántos "records" hay (registros, es decir filas)  
+
 
 
 
