@@ -1,6 +1,6 @@
-#CURSO SQL EN DATACAMP.
+# CURSO SQL EN DATACAMP.
 
-##TEMA 1
+## TEMA 1
 
 **SQL** = Structured Query Lenguage
 
