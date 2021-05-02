@@ -28,7 +28,7 @@ import numpy as np
 # las matrices se crean a partir de listas
 np_baseball = np.array(baseball)
 ```  
-construir una matriz de varias dimensiones:
+Para construir una matriz de varias dimensiones:
 ```Python
 mi_matriz = np.array([[1],[2]],[[3],[4]]) #construimos una matriz 2x2
 mi_matriz.shape # muestra dimensión de la matriz
@@ -36,7 +36,7 @@ mi_matriz.shape # muestra dimensión de la matriz
 mi_matriz[2][3]	# selecciona elemento 3 de la fila 2
 mi_matriz[2,3]	# idéntica a la anterior
 ```
-
+añadido para probar ssh
 
 INTERESANTE:  
 Orden prelación de los operadores matemáticos:  
