@@ -32,10 +32,16 @@ construir una matriz de varias dimensiones:
 ```Python
 mi_matriz = np.array([[1],[2]],[[3],[4]]) #construimos una matriz 2x2
 mi_matriz.shape # muestra dimensión de la matriz
+
+mi_matriz[2][3]	# selecciona elemento 3 de la fila 2
+mi_matriz[2,3]	# idéntica a la anterior
 ```
 
 
-INTERESANTE:
-Orden prelación de los operadores matemáticos:    
-https://www.aprendeprogramando.es/cursos-online/python/operadores-aritmeticos/operadores-aritmeticos
+INTERESANTE:  
+Orden prelación de los operadores matemáticos:  
+https://www.aprendeprogramando.es/cursos-online/python/operadores-aritmeticos/operadores-aritmeticos  
+
+Información en Español librería NumPy:  
+https://aprendeconalf.es/docencia/python/manual/numpy/  
 
