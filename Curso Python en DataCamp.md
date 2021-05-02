@@ -1,17 +1,8 @@
-# CURSO PYTHON EN DATACAMP.
+# CURSO PYTHON EN DATACAMP  
 
-## TEMA 1
+---
+## TEMA 1 
 
-**SQL** = Structured Query Lenguage.
-
-Los comandos se escriben en mayúsculas, una consulta tiene la forma general:
-```SQL
-SELECT COUNT(*)
-FROM people;
-```
-DISTINCT	selecciona solo los distintos  
-COUNT		cuenta cuántos "records" hay (registros, es decir filas)  
-  
 ---
 ## TEMA 2  
 
@@ -21,7 +12,21 @@ COUNT		cuenta cuántos "records" hay (registros, es decir filas)
 ---
 ## TEMA 4  
 
-**NumPy** Es un paquete para python esencial para la Ciencia de Datos. 
+**NumPy** (Numeric Python) Es un paquete para python esencial para la Ciencia de Datos. La listas no son eficientes y es difícil operar con ellas. NumPy tiene un tipo nuevo "array" con métodos especializados para realizar todo tipo de operaciones con este tipo nuevo.
+Los arrays deben contener valores de un solo tipo, matriz de int, matriz de booleanos...etc, si no es así los convierte todos en cadenas.  
+Supongamos que tenemos una matriz bmi con flotantes:  
+bmi[1]		-> devuelve el elemento de índice 1 (el segundo)
+bmi >23		-> devuelve un array booleano que indica qué elementos son mayores de 23.  
+bmi[bmi >23]-> devuelve una matriz solo con los elementos mayores de 23.
+```Python
+# lista que necesitamos convertir en matriz
+baseball = [180, 215, 210, 210, 188, 176, 209, 200]
 
+# Import the numpy package as np
+import numpy as np
+
+# las matrices se crean a partir de listas
+np_baseball = np.array(baseball)
+```  
 
 
