@@ -99,7 +99,11 @@ WHERE name LIKE 'Data%';  # NOT LIKE para seleccionar los que no cumplen la paut
                           
 ```
 ## TEMA 3: Funciones agregadas
-En SQL las funciones agregadas realizan cálculos con los datos
+En SQL las funciones agregadas realizan cálculos con los datos y generan una tabla con el nombre de la función y el resultado.
+SQL asume que si divides un entero por un entero es que quieres que devuelva un entero, ojo porque se pueden cometer errores como:
+SELECT 45 / 10 * 100.0; #devuelve 400 erróneamente
+cuando seamos la posibilidad de tener decimales en la división hay que meter por lo menos un flotante
+SELECT 45 * 100.0 / 10; #devuelve 45.0
 
 ```SQL
 
@@ -114,7 +118,33 @@ SELECT MAX(budget) AS max_budget,   # se pueden asignar alias a algunos cálculo
        MAX(duration) AS max_duration
 FROM films;
 
+SELECT AVG(duration)/60.0 AS avg_duration_hours   # se pueden realizar operaciones
+FROM films
 
+SELECT (4 * 3); #devuelve el resultado de la operación básica
+SELECT (4.0 / 3.0) AS result;   ##devuelve el resultado de la operación básica y lo asigna a una variable
+```
+
+## TEMA 4: Ordenando y agrupando
+La ordenación ORDER BY por defecto es ascendente
+```SQL
+SELECT title
+FROM films
+ORDER BY release_year DESC;  # añadida la palabra clave DESC para invertir el orden
+
+SELECT birthdate, name    # ordenar por varias columnas
+FROM people
+ORDER BY birthdate, name;   #primero ordenaría por birthdate y después por name
+```
+La agrupación GROUP BY es utilizada con funciones agregadas COUNT() or MAX(). Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY
+```SQL
+SELECT sex, count(*)   # vamos a seleccionar un columna y la vamos a contar
+FROM employees
+GROUP BY sex; # agrupando por el valor de una columna
+
+SELECT release_year, MAX(budget)    # introducimos la función agregada max
+FROM films
+GROUP BY release_year
 ```
 
 
