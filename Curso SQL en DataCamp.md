@@ -78,6 +78,43 @@ FROM films
 WHERE (release_year >= 1990 AND release_year < 2000)
 AND (certification = 'PG' OR certification = 'R');
 
+SELECT title  #utilizando la palabra BETWEEN podemos acortarlo. los extremos son inclusivos
+FROM films
+WHERE release_year
+BETWEEN 1994 AND 2000;
+
+SELECT name   #cuando hay muchos OR se puede emplear WHERE "campo" IN para hecerlo más legible
+FROM kids
+WHERE age IN (2, 4, 6, 8, 10);  #operación OR entre todos los valores
+
+SELECT COUNT(*)   # busca valores nulos o que faltan (no aplica a los valores inválidos)
+FROM people
+WHERE birthdate IS NULL;  # NOT NULL bara buscar los que no son nulos
+
+SELECT name   # busca valores que cumplan una determinada pauta
+FROM companies
+WHERE name LIKE 'Data%';  # NOT LIKE para seleccionar los que no cumplen la pauta
+                          # el comodín % implica: cero, uno o varios caracteres iguales
+                          # el comodín _ implica: un solo carácter
+                          
+```
+## TEMA 3: Funciones agregadas
+En SQL las funciones agregadas realizan cálculos con los datos
+
+```SQL
+
+# AVG: calcula la media de los valores de la columna budget
+# MAX: devuelve el valor máximo de la columna
+# SUM: devuelve el sumatorio de todos los valores de la columna
+# MIN: devuelve el valor mínimo de la columna
+SELECT AVG(budget)  
+FROM films;
+
+SELECT MAX(budget) AS max_budget,   # se pueden asignar alias a algunos cálculos
+       MAX(duration) AS max_duration
+FROM films;
+
+
 ```
 
 
