@@ -126,7 +126,8 @@ SELECT (4.0 / 3.0) AS result;   ##devuelve el resultado de la operación básica
 ```
 
 ## TEMA 4: Ordenando y agrupando
-La ordenación ORDER BY por defecto es ascendente
+
+La ordenación **ORDER BY** por defecto es ascendente, para invertir el orden añadiremos **DESC** al final.
 ```SQL
 SELECT title
 FROM films
@@ -136,7 +137,8 @@ SELECT birthdate, name    # ordenar por varias columnas
 FROM people
 ORDER BY birthdate, name;   #primero ordenaría por birthdate y después por name
 ```
-La agrupación GROUP BY es utilizada con funciones agregadas COUNT() or MAX(). Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY
+
+La agrupación **GROUP BY** es utilizada con funciones agregadas COUNT() or MAX(). Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY
 ```SQL
 SELECT sex, count(*)   # vamos a seleccionar un columna y la vamos a contar
 FROM employees
@@ -145,8 +147,34 @@ GROUP BY sex; # agrupando por el valor de una columna
 SELECT release_year, MAX(budget)    # introducimos la función agregada max
 FROM films
 GROUP BY release_year
+
+SELECT release_year, country, MAX(budget) #si aquí hay 2 columnas y una tercera con una función agregada
+FROM films
+GROUP BY release_year, country    #aquí deben estar las 2 primeras columnas
 ```
 
+En SQL, **las funciones agregadas no pueden utilizarse con la claúsula WHERE**. Si queremos realizar un filtrado en base al resultado de una función agregada necesitaremos utilizar la claúsula **HAVING**.
+```SQL
+SELECT release_year
+FROM films
+GROUP BY release_year
+HAVING COUNT(title) > 10;   # muestra solo los años en los que hay más de 10 títulos
+```
 
+Ejemplos didácticos todo junto:
+```SQL
+SELECT release_year, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross   #las columnas que queremos mostrar
+FROM films    # la base de datos
+WHERE release_year > 1990   # restringimos la búsqueda
+GROUP BY release_year   # agrupamos la salida
+HAVING AVG(budget) > 60000000   # restringimos la salida
+ORDER BY AVG(gross) DESC    # ordenamos la salida
 
+SELECT country, AVG(budget) as avg_budget, AVG (gross) as avg_gross   #las columnas que queremos mostrar
+FROM films    # la base de datos
+GROUP BY country    # group by country
+HAVING COUNT(title) > 10    #where the country has more than 10 titles
+ORDER BY country    # order by country
+LIMIT 5   #limit to only show 5 results
+```
 
