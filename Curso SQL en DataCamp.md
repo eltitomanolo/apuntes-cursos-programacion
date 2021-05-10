@@ -1,6 +1,10 @@
-# CURSO SQL EN DATACAMP.
 
-## TEMA 1: Seleccionando columnas
+# **GESTION DE DATOS BÁSICO** (DATACAMP)
+
+-----
+## INTRODUCCIÓN A SQL
+-----
+### TEMA 1: Seleccionando columnas
 
 **SQL** = Structured Query Lenguage: es el lenguaje nativo para acceder a las bases de datos relacionales.
 
@@ -36,7 +40,7 @@ SELECT COUNT(DISTINCT birthdate)  #devuelve el úmero de registros válidos y di
 FROM people;
 ```
 
-## TEMA 2: Filtrando filas
+### TEMA 2: Filtrando filas
 En SQL, la keyword WHERE permite hacer filtrados por texto o por valores numéricos en una tabla:
 ``` SQL
 # = equal
@@ -98,7 +102,7 @@ WHERE name LIKE 'Data%';  # NOT LIKE para seleccionar los que no cumplen la paut
                           # el comodín _ implica: un solo carácter
                           
 ```
-## TEMA 3: Funciones agregadas
+### TEMA 3: Funciones agregadas
 En SQL las funciones agregadas realizan cálculos con los datos y generan una tabla con el nombre de la función y el resultado.
 SQL asume que si divides un entero por un entero es que quieres que devuelva un entero, ojo porque se pueden cometer errores como:
 SELECT 45 / 10 * 100.0; #devuelve 400 erróneamente
@@ -125,7 +129,7 @@ SELECT (4 * 3); #devuelve el resultado de la operación básica
 SELECT (4.0 / 3.0) AS result;   ##devuelve el resultado de la operación básica y lo asigna a una variable
 ```
 
-## TEMA 4: Ordenando y agrupando
+### TEMA 4: Ordenando y agrupando
 
 La ordenación **ORDER BY** por defecto es ascendente, para invertir el orden añadiremos **DESC** al final.
 ```SQL
@@ -188,5 +192,8 @@ ON films.id = reviews.film_id   # indica cuál es el vínculo entre las tablas (
 WHERE title = 'To Kill a Mockingbird';
 ```
 
-
+-----
+## UNIENDO DATOS EN SQL
+-----
+### TEMA 1: Introducción a las uniones
 
