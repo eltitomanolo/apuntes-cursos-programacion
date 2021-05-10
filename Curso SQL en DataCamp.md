@@ -138,7 +138,9 @@ FROM people
 ORDER BY birthdate, name;   #primero ordenaría por birthdate y después por name
 ```
 
-La agrupación **GROUP BY** es utilizada con funciones agregadas COUNT() or MAX(). Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY
+La agrupación **GROUP BY** es utilizada con funciones agregadas como COUNT() o MAX(). Es lógico, porque al unirse varias filas en una, en la columna siguiente solo se pueden poner datos que provengan de todas esas filas agrupadas en una.
+Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY.
+Se retornará un error si intentas poner en SELECT un campo que no está en GROUP BY sin utilizarlo para hacer algún cálculo para toda la agrupación.
 ```SQL
 SELECT sex, count(*)   # vamos a seleccionar un columna y la vamos a contar
 FROM employees
@@ -177,4 +179,14 @@ HAVING COUNT(title) > 10    #where the country has more than 10 titles
 ORDER BY country    # order by country
 LIMIT 5   #limit to only show 5 results
 ```
+Para consultar varias tablas relaccionadas entre si:
+```SQL
+SELECT title, imdb_score
+FROM films
+JOIN reviews
+ON films.id = reviews.film_id   # indica cuál es el vínculo entre las tablas (campo clave)
+WHERE title = 'To Kill a Mockingbird';
+```
+
+
 
