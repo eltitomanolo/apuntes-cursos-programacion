@@ -197,3 +197,30 @@ WHERE title = 'To Kill a Mockingbird';
 -----
 ### TEMA 1: Introducción a las uniones
 
+Con INNER JOIN construimos una temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
+Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
+
+```SQL
+# Enocasiones el orden lógico para escribir código es:
+SELECT c.code AS country_code, name, year, inflation_rate   -- 3. Select fields with aliases
+FROM countries AS c
+  INNER JOIN economies AS e   #  -- 1. Join to economies (alias e)
+    ON c.code = e.code;   #     -- 2. Match on code
+    
+# ejemplo de varias uniones consecutivas entre dos tablas:
+SELECT *
+FROM left_table
+  INNER JOIN right_table
+    ON left_table.id = right_table.id
+  INNER JOIN another_table
+    ON left_table.id = another_table.id;
+    
+# ejemplo de varias uniones consecutivas, una unión se hace sobre el resultado de la otra     
+SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
+  FROM countries AS c
+  INNER JOIN populations AS p
+    ON c.code = p.country_code
+  INNER JOIN  economies AS e
+    ON c.code = e.code;    
+```
+
