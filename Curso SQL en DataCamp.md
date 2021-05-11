@@ -197,11 +197,11 @@ WHERE title = 'To Kill a Mockingbird';
 -----
 ### TEMA 1: Introducción a las uniones
 
-Con INNER JOIN construimos una temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
+Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
 
 ```SQL
-# Enocasiones el orden lógico para escribir código es:
+# En ocasiones el orden lógico para escribir código es:
 SELECT c.code AS country_code, name, year, inflation_rate   -- 3. Select fields with aliases
 FROM countries AS c
   INNER JOIN economies AS e   #  -- 1. Join to economies (alias e)
@@ -223,4 +223,14 @@ SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
   INNER JOIN  economies AS e
     ON c.code = e.code;    
 ```
+Cuando unimos tablas con un campo con idéntico nombre podemos utilizar **USING(campo_comun)** en lugar de ON:
+```SQL
+SELECT c.code AS country_code, name, year, inflation_rate
+FROM countries AS c
+  INNER JOIN economies AS e
+    USING(code)     # elcampo común va entre paréntesis
+    
+    
+´´´
+
 
