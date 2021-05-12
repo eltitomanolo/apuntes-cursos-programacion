@@ -228,9 +228,27 @@ Cuando unimos tablas con un campo con idéntico nombre podemos utilizar **USING(
 SELECT c.code AS country_code, name, year, inflation_rate
 FROM countries AS c
   INNER JOIN economies AS e
-    USING(code)     # elcampo común va entre paréntesis
+    USING(code)     # elcampo común va entre paréntesis  
+```
+**Autouniones**: Self-ish joins, just in CASE, unimos una tabla con ella misma para obtener campos emparejados como si fuera un torneo de futbol en el que tienen que jugar todos contra todos, si no queremos jugar contra nosotros mismos hay que incluir una claúsula AND para eviarlo
+```SQL
+SELECT p1.country_code, p1.size AS size2010, p2.size AS size2015  # hay que poner alias porque sino saldrían 2 colunmas con el mismo texto
+FROM populations AS p1                                            # y eso es allgo que no permite, lógicamente, SQL.
+  INNER JOIN populations AS p2
+    ON p1.country_code = p2.country_code
     
-    
-´´´
-
-
+SELECT p1.country_code,
+       p1.size AS size2010, 
+       p2.size AS size2015,
+       -- 1. calculate growth_perc
+       ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc
+-- 2. From populations (alias as p1)
+FROM populations AS p1
+  -- 3. Join to itself (alias as p2)
+  INNER JOIN populations AS p2
+    -- 4. Match on country code
+    ON p1.country_code = p2.country_code
+        -- 5. and year (with calculation)
+        AND p1.year = p2.year - 5;
+```
+**CASE WHEN THEN ELSE END** se utiliza para agrupaciones condicionales
