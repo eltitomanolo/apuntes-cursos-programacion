@@ -196,7 +196,7 @@ WHERE title = 'To Kill a Mockingbird';
 ## UNIENDO DATOS EN SQL
 -----
 ### TEMA 1: Introducción a las uniones interiores: INNER JOIN
-
+Las uniones interiores combinan registros que están en ambas tablas.
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
 
