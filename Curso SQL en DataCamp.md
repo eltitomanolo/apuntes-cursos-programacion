@@ -195,7 +195,7 @@ WHERE title = 'To Kill a Mockingbird';
 -----
 ## UNIENDO DATOS EN SQL
 -----
-### TEMA 1: Introducción a las uniones: INNER JOIN
+### TEMA 1: Introducción a las uniones interiores: INNER JOIN
 
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
@@ -280,5 +280,5 @@ ORDER BY geosize_group;
 
 ```
 
-### TEMA 2: LEFT y RIGHT JOINS:
+### TEMA 2: Uniones exteriores: LEFT y RIGHT JOINS
 
