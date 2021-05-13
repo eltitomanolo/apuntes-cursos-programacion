@@ -195,7 +195,7 @@ WHERE title = 'To Kill a Mockingbird';
 -----
 ## UNIENDO DATOS EN SQL
 -----
-### TEMA 1: Introducción a las uniones
+### TEMA 1: Introducción a las uniones: INNER JOIN
 
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
@@ -240,15 +240,45 @@ FROM populations AS p1                                            # y eso es all
 SELECT p1.country_code,
        p1.size AS size2010, 
        p2.size AS size2015,
-       -- 1. calculate growth_perc
-       ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc
--- 2. From populations (alias as p1)
-FROM populations AS p1
-  -- 3. Join to itself (alias as p2)
-  INNER JOIN populations AS p2
-    -- 4. Match on country code
+       
+       ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc # 1. calculate growth_perc
+FROM populations AS p1  
+  INNER JOIN populations AS p2  #-- 3. autounión (alias as p2)
     ON p1.country_code = p2.country_code
-        -- 5. and year (with calculation)
-        AND p1.year = p2.year - 5;
+        AND p1.year = p2.year - 5;   #cálculo para seleccionar un añoen la primera y cinco años menos en las egunda
 ```
 **CASE WHEN THEN ELSE END** se utiliza para agrupaciones condicionales
+```SQL
+SELECT name, continent, code, surface_area,
+   CASE WHEN surface_area > 2000000 THEN 'large'
+        WHEN surface_area > 350000 THEN 'medium'
+        ELSE 'small' END
+        AS geosize_group  #le asignamos un alias a la colunma que se va a crear y añadir al final
+FROM countries
+
+SELECT name, continent, code, surface_area,
+    CASE WHEN surface_area > 2000000 THEN 'large'
+       WHEN surface_area > 350000    THEN 'medium'
+       ELSE 'small' END
+       AS geosize_group # alias de la nueva columna
+INTO countries_plus # creamos una nueva tabla que nos puede servir para la siguiente consulta
+FROM countries;
+
+SELECT country_code, size,
+  CASE WHEN size > 50000000 THEN 'large'
+       WHEN size > 1000000  THEN 'medium'
+       ELSE 'small' END
+       AS popsize_group
+INTO pop_plus       
+FROM populations
+WHERE year = 2015;  # <-- el punto y coma indica el final de la primera consulta y el inicio de la segunda consulta sobre la primera
+SELECT name, continent, geosize_group, popsize_group 
+FROM countries_plus AS c
+  INNER JOIN pop_plus AS p  # la tabla pop_plus fuecreada en la consulta anterior con INTO pop_plus
+    ON c.code = p.country_code
+ORDER BY geosize_group;
+
+```
+
+### TEMA 2: LEFT y RIGHT JOINS:
+
