@@ -5,7 +5,8 @@
 ## INTRODUCCIÓN A SQL
 -----
 ### TEMA 1: Seleccionando columnas
-
+(Buen sitio en español para consultas: https://diego.com.es/certificacion-php en sección Databases
+o en su repositorio github https://github.com/diegotham/certificacion-php/tree/master/7-Databases)
 **SQL** = Structured Query Lenguage: es el lenguaje nativo para acceder a las bases de datos relacionales.
 
 Una base de datos relacional es un conjunto de tablas en las que cada una representa un tipo de entidad.
@@ -281,4 +282,5 @@ ORDER BY geosize_group;
 ```
 
 ### TEMA 2: Uniones exteriores: LEFT y RIGHT JOINS
+buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql
 
