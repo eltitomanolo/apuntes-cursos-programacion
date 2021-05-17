@@ -326,7 +326,7 @@ FROM cities AS c
 ```
 
 ### TEMA 3: Teoría de conjuntos.
-Con estas instrucciones se van a unir todos los registros de dos tablas similares, es decir, las dos tablas deben tener los mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos.
+Con estas instrucciones se van a crear tablas con los registros similares de dos tablas, es decir, mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos.
 ![conjuntos](https://user-images.githubusercontent.com/32695362/118522792-c242a380-b73c-11eb-8922-1aaf41b66282.png).
 
 En el diagrama anterior,cáda conjunto representa una tabla de datos.
