@@ -199,6 +199,9 @@ WHERE title = 'To Kill a Mockingbird';
 ### TEMA 1: Introducción a las uniones interiores: INNER JOIN
 Las uniones interiores combinan registros que están en ambas tablas.
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
+
+![INNER JOIN](https://user-images.githubusercontent.com/32695362/118518037-0b442900-b738-11eb-9089-68196032dd7e.png) .
+
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
 
 ```SQL
@@ -282,5 +285,57 @@ ORDER BY geosize_group;
 ```
 
 ### TEMA 2: Uniones exteriores: LEFT y RIGHT JOINS
-buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql
+Buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql .
+Las uniones exteriores combinan todos los registros de una tabla con todos los que coincidan en el campo clave de otra. cuando no coincida con ninguno se pone NULL.
+
+**LEFT JOIN**: Coge la tabla completa de la derecha y le agrega las columnas de la tabla de la izquierda que tengan el mismo campo clave, poniendo NULL en los registros no tengan pareja. Si en la tabla de la izquierda hay varios registros que coincide con el mismo campo clave los añade todos.
+
+![left_join](https://user-images.githubusercontent.com/32695362/118516046-404f7c00-b736-11eb-98e7-1d03f8806241.png)
+![LEFT JOIN 2](https://user-images.githubusercontent.com/32695362/118516693-d7b4cf00-b736-11eb-9da8-19f3c1c63148.png)
+
+**RIGHT JOIN**: Igual que el anterior pero hacia la derecha. No se utiliza mucho porque en realidad se consigue lo mismo cambiando el orde en que se cogen las tablas.
+
+```SQL
+SELECT c.name AS country, local_name, l.name AS language, percent
+FROM countries AS c  # From left table (alias as c)
+  LEFT JOIN languages AS l  #  Join to right table (alias as l)
+    ON c.code = l.code    #   campos que deben ser iguales
+ORDER BY c.name DESC;
+```
+**FULL JOIN***: Coje todos los registros de las tablas derecha e izquierda y los une cuando tengan igual campo clave, rellenandocon NULL donde no haya coincidencia.
+
+![FULL JOIN](https://user-images.githubusercontent.com/32695362/118520231-30399b80-b73a-11eb-9319-2979f9922e82.png).
+
+```SQL
+SELECT countries.name, code, languages.name AS language
+FROM languages
+  FULL JOIN countries
+    USING (code)    #-- 5. Match on code
+WHERE countries.name LIKE 'V%' OR countries.name IS NULL  # Where countries.name starts with V or is null
+ORDER BY countries.name;
+```
+
+**CROSS JOIN**: Toma todas las combinaciones posibles de dos tablas.
+
+![cross join](https://user-images.githubusercontent.com/32695362/118522108-ff5a6600-b73b-11eb-962e-1e7ca8bbf799.png)
+
+```SQL
+SELECT c.name AS city, l.name AS language
+FROM cities AS c        
+  CROSS JOIN languages AS l
+```
+
+### TEMA 3: Teoría de conjuntos.
+Con estas instrucciones se van a unir todos los registros de dos tablas similares, es decir, las dos tablas deben tener los mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos.
+![conjuntos](https://user-images.githubusercontent.com/32695362/118522792-c242a380-b73c-11eb-8922-1aaf41b66282.png).
+
+En el diagrama anterior,cáda conjunto representa una tabla de datos.
+**UNION** todos los registros pero no duplica los comunes.
+**UNION ALL** todos los registros replicando los comunes.
+**INTERSECT** solo los registros que están en ambas tablas
+**EXCEPT**  los registros de la primera tabla excepto los que también están en la segunda
+
+
+
+
 
