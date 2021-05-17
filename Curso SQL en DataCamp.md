@@ -196,7 +196,7 @@ WHERE title = 'To Kill a Mockingbird';
 -----
 ## UNIENDO DATOS EN SQL
 -----
-### TEMA 1: Introducción a las uniones interiores: INNER JOIN
+### TEMA 1: Introducción a las uniones interiores: INNER JOIN  (se toman todos las columnas de las tablas aunque solo se muestran las deseadas)
 Las uniones interiores combinan registros que están en ambas tablas.
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
 
@@ -284,7 +284,7 @@ ORDER BY geosize_group;
 
 ```
 
-### TEMA 2: Uniones exteriores: LEFT y RIGHT JOINS
+### TEMA 2: Uniones exteriores: LEFT y RIGHT JOINS (igual que el anterior, se toman todas las columnas de las tablas aunque solo se muestran las deseadas)
 Buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql .
 Las uniones exteriores combinan todos los registros de una tabla con todos los que coincidan en el campo clave de otra. cuando no coincida con ninguno se pone NULL.
 
@@ -325,7 +325,7 @@ FROM cities AS c
   CROSS JOIN languages AS l
 ```
 
-### TEMA 3: Teoría de conjuntos.
+### TEMA 3: Teoría de conjuntos (a diferencia de los tema 1 y 2 anteriores, solo se toman algunas columnas de las tablas).
 Con estas instrucciones se van a crear tablas con los registros similares de dos tablas, es decir, mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos.
 ![conjuntos](https://user-images.githubusercontent.com/32695362/118522792-c242a380-b73c-11eb-8922-1aaf41b66282.png).
 
