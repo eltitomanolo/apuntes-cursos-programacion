@@ -326,16 +326,57 @@ FROM cities AS c
 ```
 
 ### TEMA 3: Teoría de conjuntos (a diferencia de los tema 1 y 2 anteriores, solo se toman algunas columnas de las tablas).
-Con estas instrucciones se van a crear tablas con los registros similares de dos tablas, es decir, mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos.
+Con estas instrucciones se van a crear tablas con los registros similares de dos tablas, es decir, mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos. Con estas sentencias de conjuntos se apilan/juntan registros de dos tablas pero no se hacen búsquedas como ocurre con JOIN.
 ![conjuntos](https://user-images.githubusercontent.com/32695362/118522792-c242a380-b73c-11eb-8922-1aaf41b66282.png).
 
 En el diagrama anterior,cáda conjunto representa una tabla de datos.
 **UNION** todos los registros pero no duplica los comunes.
-**UNION ALL** todos los registros replicando los comunes.
-**INTERSECT** solo los registros que están en ambas tablas
-**EXCEPT**  los registros de la primera tabla excepto los que también están en la segunda
+
+**UNION ALL** todos los registros repitiendo los comunes.
+
+**INTERSECT** solo los registros que están en ambas tablas.
+
+**EXCEPT**  los registros de la primera tabla excepto los que también están en la segunda.
+
+```SQL
+SELECT country_code
+  FROM cities
+	UNION   # 	-- Set theory clause
+SELECT code   #  este campo debe ser similar al primero country_code, es decir, texto, número ....
+  FROM currencies
+ORDER by country_code;
 
 
+SELECT code, year
+  FROM economies
+  INTERSECT  # 	-- Set theory clause
+SELECT country_code, year  #  estos campos deben ser similares a los primeros code y year
+  FROM populations
+ORDER BY code, year;
+```
+**SEMI JOINS Y ANTI JOINS** (volvemos a estudiar uniones, como las que realizan INNER JOIN, SELF JOIN,LEFT JOIN, RIGHT JOIN, FULL JOIN Y CROSS JOIN y que agregaban columnas a la tabla izquierda original).
+Ahora se va a utilizar la tabla de la derecha para decidir qué registros mantener en la tabla de la izquierda. (es como utilizar WHERE pero dependiendo de los valores de otra tabla. Son consultas anidadas para restringir búsquedas)
+**SEMI JOINS:** elije registros de 
+**SEMI JOINS Y ANTI JOINS**
+
+´´´SQL
+SELECT name
+  FROM languages
+WHERE code IN   # SEMI JOIN
+  (Select code
+   FROM countries
+   WHERE region = 'Middle East')
+ORDER BY name;
+
+SELECT code, name
+  FROM countries
+  WHERE continent = 'Oceania' # varias condiciones unidas con AND
+  	AND code NOT IN   # ANTI JOIN
+  	(SELECT code
+  	 FROM currencies);
+´´´
+
+### TEMA 4: Subconsultas (consultas anidadas) dentro de WHERE y SELECT.
 
 
 
