@@ -200,7 +200,6 @@ WHERE title = 'To Kill a Mockingbird';
 ### TEMA 1: Introducción a las uniones interiores: INNER JOIN  (se toman todos las columnas de las tablas aunque solo se muestran las deseadas)
 Las uniones interiores combinan registros que están en ambas tablas.
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
-
 ![INNER JOIN](https://user-images.githubusercontent.com/32695362/118518037-0b442900-b738-11eb-9089-68196032dd7e.png) .
 
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
