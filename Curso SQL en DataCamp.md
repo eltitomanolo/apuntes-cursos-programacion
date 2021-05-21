@@ -161,6 +161,7 @@ GROUP BY release_year, country    #aquí deben estar las 2 primeras columnas
 ```
 
 En SQL, **las funciones agregadas no pueden utilizarse con la claúsula WHERE**. Si queremos realizar un filtrado en base al resultado de una función agregada necesitaremos utilizar la claúsula **HAVING**.
+
 ```SQL
 SELECT release_year
 FROM films
@@ -359,7 +360,7 @@ Ahora se va a utilizar la tabla de la derecha para decidir qué registros manten
 **SEMI JOINS:** elije registros de 
 **SEMI JOINS Y ANTI JOINS**
 
-´´´SQL
+```SQL
 SELECT name
   FROM languages
 WHERE code IN   # SEMI JOIN
@@ -374,7 +375,7 @@ SELECT code, name
   	AND code NOT IN   # ANTI JOIN
   	(SELECT code
   	 FROM currencies);
-´´´
+```
 
 ### TEMA 4: Subconsultas (consultas anidadas) dentro de WHERE y SELECT.
 
