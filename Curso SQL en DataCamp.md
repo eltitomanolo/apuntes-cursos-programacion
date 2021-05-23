@@ -85,8 +85,7 @@ AND (certification = 'PG' OR certification = 'R');
 
 SELECT title  #utilizando la palabra BETWEEN podemos acortarlo. los extremos son inclusivos
 FROM films
-WHERE release_year
-BETWEEN 1994 AND 2000;
+WHERE release_year BETWEEN 1994 AND 2000;
 
 SELECT name   #cuando hay muchos OR se puede emplear WHERE "campo" IN para hecerlo más legible
 FROM kids
