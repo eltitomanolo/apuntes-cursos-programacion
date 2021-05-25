@@ -172,7 +172,7 @@ FROM films
 GROUP BY release_year, country    #aquí deben estar las 2 primeras columnas
 ```
 
-En SQL, **las funciones agregadas no pueden utilizarse con la claúsula WHERE**. Si queremos realizar un filtrado en base al resultado de una función agregada necesitaremos utilizar la claúsula **HAVING**.
+En SQL, **las funciones agregadas no pueden utilizarse dentro de la claúsula WHERE**. Si queremos realizar un filtrado en base al resultado de una función agregada necesitaremos utilizar la claúsula **HAVING**.
 
 ```SQL
 SELECT release_year
@@ -212,6 +212,7 @@ WHERE title = 'To Kill a Mockingbird';
 ### TEMA 1: Introducción a las uniones interiores: INNER JOIN  (se toman todos las columnas de las tablas aunque solo se muestran las deseadas)
 Las uniones interiores combinan registros que están en ambas tablas.
 Con INNER JOIN construimos una tabla temporal con los datos de dos tablas que son comunes en dos columnas de dichas tablas.
+
 ![INNER JOIN](https://user-images.githubusercontent.com/32695362/118518037-0b442900-b738-11eb-9089-68196032dd7e.png) .
 
 Es una práctica común crear alias para cada tabla acortando el nombre y poniendo solo la inicial.(en todos los ejercicios se sigue esteprotocolo.
@@ -223,47 +224,49 @@ FROM countries AS c
   INNER JOIN economies AS e   #  -- 1. Join to economies (alias e)
     ON c.code = e.code;   #     -- 2. Match on code
     
-# ejemplo de varias uniones consecutivas entre dos tablas:
+# ejemplo de varias uniones consecutivas entre varias tablas:
 SELECT *
 FROM left_table
   INNER JOIN right_table
-    ON left_table.id = right_table.id
+    ON left_table.id = right_table.id	# el campo left.table.id se mantiene como nexo común
   INNER JOIN another_table
-    ON left_table.id = another_table.id;
+    ON left_table.id = another_table.id;	## el campo left.table.id se mantiene como nexo común
     
 # ejemplo de varias uniones consecutivas, una unión se hace sobre el resultado de la otra     
 SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
   FROM countries AS c
   INNER JOIN populations AS p
-    ON c.code = p.country_code
+    ON c.code = p.country_code	# c.code de la primera tabla es el nexo común
   INNER JOIN  economies AS e
-    ON c.code = e.code;    
+    ON c.code = e.code;    ## c.code es el nexo común
 ```
-Cuando unimos tablas con un campo con idéntico nombre podemos utilizar **USING(campo_comun)** en lugar de ON:
+Cuando unimos tablas que tienen un campo con idéntico nombre podemos utilizar **USING(campo_comun)** en lugar de ON:
 ```SQL
 SELECT c.code AS country_code, name, year, inflation_rate
 FROM countries AS c
   INNER JOIN economies AS e
     USING(code)     # elcampo común va entre paréntesis  
 ```
-**Autouniones**: Self-ish joins, just in CASE, unimos una tabla con ella misma para obtener campos emparejados como si fuera un torneo de futbol en el que tienen que jugar todos contra todos, si no queremos jugar contra nosotros mismos hay que incluir una claúsula AND para eviarlo
+**Autouniones**: Self-ish joins, just in CASE, unimos una tabla con ella misma para obtener campos emparejados como si fuera un torneo de futbol en el que tienen que jugar todos contra todos, si no queremos jugar contra nosotros mismos hay que incluir una claúsula AND que meta una exclusión tipo <> para eviarlo
 ```SQL
 SELECT p1.country_code, p1.size AS size2010, p2.size AS size2015  # hay que poner alias porque sino saldrían 2 colunmas con el mismo texto
-FROM populations AS p1                                            # y eso es allgo que no permite, lógicamente, SQL.
+FROM populations AS p1                                            # y eso es algo que no permite, lógicamente, SQL.
   INNER JOIN populations AS p2
     ON p1.country_code = p2.country_code
     
 SELECT p1.country_code,
        p1.size AS size2010, 
        p2.size AS size2015,
-       
        ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc # 1. calculate growth_perc
 FROM populations AS p1  
   INNER JOIN populations AS p2  #-- 3. autounión (alias as p2)
     ON p1.country_code = p2.country_code
-        AND p1.year = p2.year - 5;   #cálculo para seleccionar un añoen la primera y cinco años menos en las egunda
+        AND p1.year = p2.year - 5;   #cálculo para seleccionar un año en la primera y cinco años menos en la segunda
 ```
-**CASE WHEN THEN ELSE END** se utiliza para agrupaciones condicionales
+**CASE WHEN THEN ELSE END** se utiliza dentro de SELECT para crear una columna personalizada que se agrega a la tabla temporal resultante, pudiendo mostrar etiquetas o resultados en función del valor de otra columna.
+
+Si queremos que la tabla no sea temporal, es decir que se mantenga para futuras consultas hay que utilizar **INTO**.
+
 ```SQL
 SELECT name, continent, code, surface_area,
    CASE WHEN surface_area > 2000000 THEN 'large'
@@ -300,12 +303,12 @@ ORDER BY geosize_group;
 Buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql .
 Las uniones exteriores combinan todos los registros de una tabla con todos los que coincidan en el campo clave de otra. cuando no coincida con ninguno se pone NULL.
 
-**LEFT JOIN**: Coge la tabla completa de la derecha y le agrega las columnas de la tabla de la izquierda que tengan el mismo campo clave, poniendo NULL en los registros no tengan pareja. Si en la tabla de la izquierda hay varios registros que coincide con el mismo campo clave los añade todos.
+**LEFT JOIN**: Coge la tabla completa de la derecha y le agrega las columnas de la tabla de la izquierda que tengan el mismo campo clave, poniendo NULL en los registros no tengan pareja. Si en la tabla de la izquierda hay varios registros que coincide con el mismo campo clave los añade todos repitiendo los valores de la tabla de la izquierda.
 
 ![left_join](https://user-images.githubusercontent.com/32695362/118516046-404f7c00-b736-11eb-98e7-1d03f8806241.png)
 ![LEFT JOIN 2](https://user-images.githubusercontent.com/32695362/118516693-d7b4cf00-b736-11eb-9da8-19f3c1c63148.png)
 
-**RIGHT JOIN**: Igual que el anterior pero hacia la derecha. No se utiliza mucho porque en realidad se consigue lo mismo cambiando el orde en que se cogen las tablas.
+**RIGHT JOIN**: Igual que el anterior pero hacia la derecha. No se utiliza mucho porque en realidad se consigue lo mismo cambiando el orden en que se cogen las tablas.
 
 ```SQL
 SELECT c.name AS country, local_name, l.name AS language, percent
