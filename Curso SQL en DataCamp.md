@@ -78,7 +78,7 @@ FROM films
 WHERE release_year = 1994
 OR release_year = 2000;
 
-SELECT title    # se pueden conbinar los OR y los AND, OJO porque hay reglas de precedenica
+SELECT title    # se pueden combinar los OR y los AND, OJO porque hay reglas de precedencia
 FROM films
 WHERE (release_year >= 1990 AND release_year < 2000)
 AND (certification = 'PG' OR certification = 'R');
@@ -103,10 +103,14 @@ WHERE name LIKE 'Data%';  # NOT LIKE para seleccionar los que no cumplen la paut
                           
 ```
 ### TEMA 3: Funciones agregadas
-En SQL las funciones agregadas realizan cálculos con los datos y generan una tabla con el nombre de la función y el resultado.
+Las funciones agregadas realizan un cálculo sobre un conjunto de valores y devuelve un solo valor. Con la excepción de COUNT(*), las funciones de agregado ignoran los valores NULL. Las funciones de agregado se suelen usar con la cláusula GROUP BY de la instrucción SELECT.
+El nombre de la columna queda con el nombre de la función agregada utilizada y el resultado es un único valor. Para cambiar el nomre de la columna se podría utilizar un alias mediante AS.
+
+En SQL podemos hacer operaciones de cálculo directamente en el nombre de una columna mediante SELECT <operación>. En <operación> podría estar incluida una función agregada.
+
 SQL asume que si divides un entero por un entero es que quieres que devuelva un entero, ojo porque se pueden cometer errores como:
 SELECT 45 / 10 * 100.0; #devuelve 400 erróneamente
-cuando seamos la posibilidad de tener decimales en la división hay que meter por lo menos un flotante
+cuando veamos la posibilidad de tener decimales en la división hay que meter por lo menos un flotante
 SELECT 45 * 100.0 / 10; #devuelve 45.0
 
 ```SQL
@@ -143,7 +147,16 @@ ORDER BY birthdate, name;   #primero ordenaría por birthdate y después por nam
 ```
 
 La agrupación **GROUP BY** es utilizada con funciones agregadas como COUNT() o MAX(). Es lógico, porque al unirse varias filas en una, en la columna siguiente solo se pueden poner datos que provengan de todas esas filas agrupadas en una.
-Cuidado porque GROUP BY siempre va después de FROM. Y a su vez ORDER BY va siempre después de GROUP BY.
+Hay que seguir este orden:
+
+-SELECT
+
+-FROM
+
+-GROUP BY
+
+-ORDER BY
+
 Se retornará un error si intentas poner en SELECT un campo que no está en GROUP BY sin utilizarlo para hacer algún cálculo para toda la agrupación.
 ```SQL
 SELECT sex, count(*)   # vamos a seleccionar un columna y la vamos a contar
@@ -170,7 +183,7 @@ HAVING COUNT(title) > 10;   # muestra solo los años en los que hay más de 10 t
 
 Ejemplos didácticos todo junto:
 ```SQL
-SELECT release_year, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross   #las columnas que queremos mostrar
+SELECT release_year, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross   #ponemos alias a las columnas que queremos mostrar
 FROM films    # la base de datos
 WHERE release_year > 1990   # restringimos la búsqueda
 GROUP BY release_year   # agrupamos la salida
