@@ -342,9 +342,11 @@ FROM cities AS c
 
 ### TEMA 3: Teoría de conjuntos (a diferencia de los tema 1 y 2 anteriores, solo se toman algunas columnas de las tablas).
 Con estas instrucciones se van a crear tablas con los registros similares de dos tablas, es decir, mismos campos y del mismo tipo. la unión se realiza sin campo clave de unión. Es similar a operaciones con conjuntos. Con estas sentencias de conjuntos se apilan/juntan registros de dos tablas pero no se hacen búsquedas como ocurre con JOIN.
+
 ![conjuntos](https://user-images.githubusercontent.com/32695362/118522792-c242a380-b73c-11eb-8922-1aaf41b66282.png).
 
 En el diagrama anterior,cáda conjunto representa una tabla de datos.
+
 **UNION** todos los registros pero no duplica los comunes.
 
 **UNION ALL** todos los registros repitiendo los comunes.
@@ -391,7 +393,8 @@ SELECT code, name
   	 FROM currencies);
 ```
 
-### TEMA 4: Subconsultas (consultas anidadas) dentro de WHERE y SELECT.
+### TEMA 4: Subconsultas (consultas anidadas) dentro de WHERE, SELECT y FROM.
 
+Lo más común es que las subconsultas se encuentren dentro de las claúsulas WHERE Y SELECT. Cuando se hace la subconsulta en SELECT hay que darle un alias.
 
 
