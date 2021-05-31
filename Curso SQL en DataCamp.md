@@ -395,6 +395,49 @@ SELECT code, name
 
 ### TEMA 4: Subconsultas (consultas anidadas) dentro de WHERE, SELECT y FROM.
 
-Lo más común es que las subconsultas se encuentren dentro de las claúsulas WHERE Y SELECT. Cuando se hace la subconsulta en SELECT hay que darle un alias.
+La subconsultas sirven para reducir o establecer el subconjunto de datos donde se realizarán las búsquedas, se suelen incrustar entre paréntesis después de comprobar previamente de manera independiente que funcionan. Se pueden anidar varias unas dentro de otras.
+
+Lo más común es que las subconsultas se encuentren dentro de las claúsulas **WHERE**.
+
+```SQL
+SELECT *
+  FROM populations
+WHERE life_expectancy > 1.15* 
+  (SELECT AVG(life_expectancy)	#<-Subconsulta introducida como una condición más en la claúsula WHERE de la línea anterior
+      FROM populations
+      WHERE year = 2015)
+AND year = 2015;
+
+SELECT name, country_code, urbanarea_pop
+  FROM cities
+WHERE name IN
+  (SELECT capital	#<-Subconsulta introducida como una condición más en la claúsula WHERE de la línea anterior
+   FROM countries)
+ORDER BY urbanarea_pop DESC;
+   
+```
+
+Lo segundo más común es realizar subconsultas en **SELECT**, no hay que olvidar que hay que darle un alias que será la cabecera de la columna de datos resultante.
+```SQL
+SELECT countries.name AS country,
+  (SELECT COUNT(*)	#<-Subconsulta introducida como una selección más en la claúsula SELECT de la línea anterior
+   FROM cities
+   WHERE countries.code = cities.country_code) AS cities_num	# hay que darle un alias AS
+FROM countries
+ORDER BY cities_num DESC, country
+LIMIT 9;
+
+```
+
+Por último también se pueden ralizar subconsultas dentro de **FROM** y así establecer el grupo de datos sobre el que se realiza la consulta.
+```SQL
+SELECT local_name, subquery.lang_num
+  FROM countries,
+  	(SELECT code, COUNT(name) AS lang_num 	# subconsulta agregada a la claúsula FROM de la línea anterior
+  	 FROM languages
+  	 GROUP BY code) AS subquery	# alias
+  WHERE subquery.code = countries.code
+ORDER BY lang_num DESC;
+```
 
 
