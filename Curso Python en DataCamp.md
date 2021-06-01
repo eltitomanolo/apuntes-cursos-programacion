@@ -16,6 +16,7 @@ bool()  #convierte números a booleano (True False)
 lista = [a, b, c] # una lista da un solo nombre a una coleccion de valores
 lista = [a, 1, 'casa']  #puede contener diferentes tipos de datos
 listas = [['casa', 1],['barco,14]]  #puede contener otras listas
+type(lista) # devolvería que es un tipo de datos list
 
 
 ```
