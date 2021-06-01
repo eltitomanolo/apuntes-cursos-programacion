@@ -1,11 +1,24 @@
 # CURSO PYTHON EN DATACAMP  
 
 ---
-## TEMA 1 
+## TEMA 1
+```PYTHON
+type() # devuelve el tipo de dato pasado como argumento (int,float, bool, str...)
+str() #convierte números en cadenas
+int() #convierte números y cadenas a entero
+float() #convierte números y cadenas a flotante
+bool()  #convierte números a booleano (True False)
 
+```
 ---
 ## TEMA 2  
+```PYTHON
+lista = [a, b, c] # una lista da un solo nombre a una coleccion de valores
+lista = [a, 1, 'casa']  #puede contener diferentes tipos de datos
+listas = [['casa', 1],['barco,14]]  #puede contener otras listas
 
+
+```
 ---
 ## TEMA 3  
 
