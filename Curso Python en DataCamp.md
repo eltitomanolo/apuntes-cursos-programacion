@@ -11,15 +11,38 @@ bool()  #convierte números a booleano (True False)
 
 ```
 ---
-## TEMA 2  
+## TEMA 2
+
+El primer elemento de una lista tiene índice 0.
+
 ```PYTHON
-lista = [a, b, c] # una lista da un solo nombre a una coleccion de valores
+lista = [a, b, c, d, e, f] # una lista da un solo nombre a una coleccion de valores
 lista = [a, 1, 'casa']  #puede contener diferentes tipos de datos
-listas = [['casa', 1],['barco,14]]  #puede contener otras listas
+listas = [['casa', 1],['barco',14]]  #puede contener otras listas
+x = [["a", "b", "c"], # otra forma más visual de listas de listas
+     ["d", "e", "f"],
+     ["g", "h", "i"]]
 type(lista) # devolvería que es un tipo de datos list
-
-
+lista[1] # devuelve al segundo elemento de una lista.
+lista[-1] # devuelve al último elemento de una lista (índice negativo significa que empezamos por el final, no hay -0)
+lista[2:5] # devuelve un rango, el primer índice está incluido y el último índice no
+lista[:5] # si se omite algún índice devuelve todos los elementos de ese sentido
+lista[3] = 'p' # cambia un elemento de una lista
+lista[0:2]= ['h', 'g'] # cambia varios elementos de un rango
+lista2 = lista + ['h', 'g']  #el operador + añade elementos a una lista
+del(lista[3])     #elimina un elemento de una lista OJO: los siguientes elementos cambian el índice
 ```
+El nombre de la lista es la posición de memoria donde se empieza a guardar una lista, por lo que si se asigna a otra variable mediante "=" entonces ambas apuntan a la misma posición de memoria, por lo que si se varía el valor de algún elemento, éste varía en ambas listas.
+
+file:///home/manuel/Escritorio/copia%20de%20listas.png![image](https://user-images.githubusercontent.com/32695362/120519634-215a1680-c3d3-11eb-82f7-6a29d5a68bfc.png)
+
+Para copiar/duplicar una lista hay que utilizar y=list(x)
+file:///home/manuel/Escritorio/listas2.png![image](https://user-images.githubusercontent.com/32695362/120519899-76962800-c3d3-11eb-90c1-cee173f5eea8.png)
+
+nota: el separador ; se utiliza para poner varios comandos en una sola línea.
+
+
+
 ---
 ## TEMA 3  
 
