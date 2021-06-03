@@ -3,6 +3,7 @@
 ---
 ## TEMA 1
 ```PYTHON
+print()   #imprime en el terminal
 type() # devuelve el tipo de dato pasado como argumento (int,float, bool, str...)
 str() #convierte números en cadenas
 int() #convierte números y cadenas a entero
@@ -44,7 +45,60 @@ nota: el separador ; se utiliza para poner varios comandos en una sola línea.
 
 
 ---
-## TEMA 3  
+## TEMA 3 Funciones y Paquetes.
+
+Una función es un código reutilizable que realiza una sola tarea y se le puede introducir argumentos de entrada. Todas las funciones utilizadas hasta ahora son *Funciones Integradas* en Python.
+
+**help(funcion)** muestra la ayuda de una función python. Cuando un argumento se muestra entre corchetes indica que es opcional. Cuando un argumento se muestra igualado a algún valor indica que éste es por defecto.
+
+**?max** idem del anterior
+
+Todas las variables en Python son **Objetos**, que a su vez tienen sus propios **métodos** según su tipo (int, float, boolean, listas...). Los métodos son funciones que pertenecen a los objetos, dependiendo del tipo de objeto habrá disponible unos determinados método.
+
+```PYTHON
+max(lista)     #devuelve el máximo valor de una lista de valores
+round (n, p)     #redondea el número n con número de decimales después de la coma p. Si se omite p se redondea al entero más cercano
+help(funcion)       #muestra la ayuda de una función python.
+?max      #idem del anterior
+len(list)      #devuelve elnúmero de elementos de una lista
+sorted(list)   #ordena los valores según los argumentos
+lista.index('a')    # llamamos al método index del objeto lista del tipo "list" y que devuelve el número de orden de un elemento de una lista
+```
+**Métodos con string**: (help(str) nos muestra toda la información y atributos del objeto del tipo str)
+```PYTHON
+texto= "manolo"
+texto.upper()  #Pone todas las letras en mayúsculas
+texto.count("o")    #cuenta las letras o
+```
+
+**Métodos con list**:
+
+```PYTHON
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+areas.index(20.0)        #devuelve el número de índice donde se encuentra el valor introducido como parámetro
+areas.count(9.50)        #devuelve la cantidad de coincidencias con el argumento en la lista
+areas.append(24.5)       #añade elemento al final
+areas.remove(15.45)      #quita el primer elemento que coincida
+areas.reverse()          #invierte el orden de los elementos
+```
+
+Un **Paquete** es un directorio donse se encuentran **módulos** que son scripts de python que definen funciones, métodos y tipos que resuelven problemas particulares. Para poder utilizar un paquete primero debe instalarse en el sistema utilizando **pip** (pip3 install numpy) y después indicar en tu script que quieres utilizarlo
+
+Un paquete importante es *Numpy*, destinado a operar con matrices.
+
+```PYTHON
+import numpy   #importa todo el paquete
+numpy.array([1,2,3]) crea un array,
+
+import numpy as np  #importa todo el paquete y le asigna un alias   RECOMENDADO
+np.array([1,2,3])   #crea un array utilizando el alias del paquete
+
+from numpy import array  #importamos solo una función del paquete.
+array([1,2,3])           #crea un array utilizando solo el nombre de lafunción del paquete. ESTO ES CONFUSO
+
+
+```
+
 
 ---
 ## TEMA 4  
