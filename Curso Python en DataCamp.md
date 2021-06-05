@@ -110,24 +110,36 @@ bmi[1]		-> devuelve el elemento de índice 1 (el segundo)
 bmi >23		-> devuelve un array booleano que indica qué elementos son mayores de 23.  
 bmi[bmi >23]-> devuelve una matriz solo con los elementos mayores de 23.  
 ```Python
-# lista que necesitamos convertir en matriz
-baseball = [180, 215, 210, 210, 188, 176, 209, 200]
-
-# Import the numpy package as np
-import numpy as np
-
-# las matrices se crean a partir de listas
-np_baseball = np.array(baseball)
+baseball = [180, 215, 210, 210, 188, 176, 209, 200] # lista que necesitamos convertir en matriz
+import numpy as np  # Import the numpy package as np
+np_baseball = np.array(baseball) # las matrices se crean a partir de listas
+np_baseball*5  #multiplica todos los elementos por 5
+np_height_in[100:111] # devuelve una matriz con los elementos del subconjunto con índices desde el 100 al 110 (parecido a las listas)
 ```  
 Para construir una matriz de varias dimensiones:
 ```Python
 mi_matriz = np.array([[1],[2]],[[3],[4]]) #construimos una matriz 2x2
-mi_matriz.shape # muestra dimensión de la matriz
-
+mi_matriz.shape # método que muestra la dimensión de la matriz
 mi_matriz[2][3]	# selecciona elemento 3 de la fila 2
 mi_matriz[2,3]	# idéntica a la anterior
+mi_matriz[:,1] # devuelve un subconjunto de mi_matriz con todas las filas (:) y la última columna( aunque se podía haber puesto un intervalo n:m)
+mi_matriz_2D [fila_inicio:fila_final , columna_inicio:columna_final] # devuelve un subconjuto de la matriz_2D 
 ```
-añadido para probar ssh
+Para analizar datos tenemos algunos métodos en np:
+```Python
+np.mean(array)      #la media de los valores de la matriz introducida como argumento
+np.median(array)    #la media de los valores de la matriz introducida como argumento
+np.corrcoef(array)  #busca correlacion de los datos
+np.std(array)       #desviación standard
+np.sum()
+np.sort()
+np.random.normal(distribution_mean, distributio_desvatio_standard, number of samples)
+
+gk_heights = np_heights[np_positions == 'GK']     #devuelve un array donde los índices sean 'GK'
+other_heights = np_heights[np_positions != 'GK']  #devuelve un array donde los índices NO sean 'GK'
+
+```
+
 
 INTERESANTE:  
 Orden prelación de los operadores matemáticos:  
