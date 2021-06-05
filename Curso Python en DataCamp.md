@@ -96,7 +96,7 @@ np.array([1,2,3])   #crea un array utilizando el alias del paquete
 from numpy import array  #importamos solo una función del paquete.
 array([1,2,3])           #crea un array utilizando solo el nombre de lafunción del paquete. ESTO ES CONFUSO
 
-
+from scipy.linalg import inv as my_inv  #importamos las función inv(), y le damos el nombre my_inv, del subpaquete linalg que se encuentra dentro del paquete scipy
 ```
 
 
