@@ -1,7 +1,9 @@
-# CURSO PYTHON EN DATACAMP  
+# CURSO PROGRAMACIÓN EN PYTHON BÁSICO  (DATACAMP)
 
 ---
-## TEMA 1
+## INTRODUCCIÓN A PYTHON
+---
+### TEMA 1 Tipos básicos
 ```PYTHON
 print()   #imprime en el terminal
 type() # devuelve el tipo de dato pasado como argumento (int,float, bool, str...)
@@ -12,7 +14,7 @@ bool()  #convierte números a booleano (True False)
 
 ```
 ---
-## TEMA 2
+### TEMA 2 Listas
 
 El primer elemento de una lista tiene índice 0.
 
@@ -45,7 +47,7 @@ nota: el separador ; se utiliza para poner varios comandos en una sola línea.
 
 
 ---
-## TEMA 3 Funciones y Paquetes.
+### TEMA 3 Funciones y Paquetes.
 
 Una función es un código reutilizable que realiza una sola tarea y se le puede introducir argumentos de entrada. Todas las funciones utilizadas hasta ahora son *Funciones Integradas* en Python.
 
@@ -101,7 +103,7 @@ from scipy.linalg import inv as my_inv  #importamos las función inv(), y le dam
 
 
 ---
-## TEMA 4  
+### TEMA 4  Numpy
 
 **NumPy** (Numeric Python) Es un paquete para python esencial para la Ciencia de Datos. La listas no son eficientes y es difícil operar con ellas. NumPy tiene un tipo nuevo "array" con métodos especializados para realizar todo tipo de operaciones con este tipo nuevo.
 Los arrays deben contener valores de un solo tipo, matriz de int, matriz de booleanos...etc, si no es así los convierte todos al mismo tipo de la mejor manera posible para que sea homogénea,por ejemplo si tiene int y bool, los convierte todos a int, porque no se podría de manera inversa.  
