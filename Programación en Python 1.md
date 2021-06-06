@@ -4,6 +4,9 @@
 ## INTRODUCCIÓN A PYTHON
 ---
 ### TEMA 1 Tipos básicos
+NOTA: para instalar un paquete en Ubuntu hay que escribir en el terminal:
+pip3 install nombreDelPaquete (ya que tengo instalada la versión 3 de python)
+
 ```PYTHON
 print()   #imprime en el terminal
 type() # devuelve el tipo de dato pasado como argumento (int,float, bool, str...)
