@@ -128,8 +128,8 @@ mi_matriz_2D [fila_inicio:fila_final , columna_inicio:columna_final] # devuelve 
 Para analizar datos tenemos algunos métodos en np:
 ```Python
 np.mean(array)      #la media de los valores de la matriz introducida como argumento
-np.median(array)    #la media de los valores de la matriz introducida como argumento
-np.corrcoef(array)  #busca correlacion de los datos
+np.median(array)    #la mediana de los valores de la matriz introducida como argumento
+np.corrcoef(array)  #busca coeficiente de correlacion de los datos https://www.maximaformacion.es/blog-dat/que-es-la-correlacion-estadistica-y-como-interpretarla/
 np.std(array)       #desviación standard
 np.sum()
 np.sort()
