@@ -14,8 +14,22 @@ Ejemplos, descripción yusos de cada tipo de gráfico: https://doc.arcgis.com/es
 
 
 ```PYTHON
-import matplotlib.pyplot as plt
-plt.plot(x,y)
-plt.show()
+# Scatter plot (gráfico de dispersión)
+plt.scatter(x = gdp_cap, y = life_exp, s = np.array(pop) * 2, c = col, alpha = 0.8)
+
+plt.xscale('log')   # escala logaritmica en el eje x
+plt.xlabel('GDP per Capita [in USD]')   # etiquetas ejes
+plt.ylabel('Life Expectancy [in years]')
+plt.title('World Development in 2007')    # título
+plt.xticks([1000,10000,100000], ['1k','10k','100k'])  # renombrado de los valores del eje x
+
+plt.text(1550, 71, 'India') # texto añadido dentro de la gráfica
+plt.text(5700, 80, 'China')
+
+plt.grid(True)  # activar rejilla
+
+plt.show()  # mostrar gráfica
 
 ```
+
+### TEMA 2 Diccionarios y Pandas
