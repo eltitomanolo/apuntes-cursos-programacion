@@ -9,6 +9,8 @@ Matplotlib es un paquete para visualización de datos, utilizamos el subpaquete 
 
 Ejemplos de gráficos y su código en su página oficial: https://matplotlib.org/stable/gallery/index.html.
 
+Ejemplos, descripción yusos de cada tipo de gráfico: https://doc.arcgis.com/es/insights/latest/create/scatter-plot.htm
+
 
 
 ```PYTHON
