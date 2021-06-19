@@ -63,3 +63,53 @@ europe['italy'] = data  # Add data to europe under key 'italy'
  
  A una tabla se asignará a un ** Objeto Dataframe**, y las filas representan observaciones únicas y las columnas las variables, además la primera columna y la primera fila llevan asociadas etiquetas. Podemos crear un Dataframe a partir de un diccionario
  
+### TEMA 3 Logic, Control Flow and Filtering
+**Operadores de compararación:** Siempre devuelven tipos booleanos True y False. En caso de que los elementos a comparar sean cadenas los comparadores mayor y menos indicarán el orden alfabético. 
+< Strictly less than
+<= Less than or equal
+> Strictly greater than
+>= Greater than or equal
+== Equal
+!= Not equal
+
+```python
+# recordatorio:
+bmi = np.array([ 21.852, 20.975, 21.75 , 24.747, 21.441]) #creamos un objeto numpy
+bmi > 23  # devuelve: ([False, False, False, True, False], dtype=bool)
+bmi[bmi > 23] #devuelve array([ 24.747])
+```
+
+**Operadores Booleanos:** and, or, not no funcionan con objetos de numpy, para este tipo de elementos hay que utilizar:
+logical_and()
+logical_or()
+logical_not()
+```python
+x = 12 # variable de ejemplo
+x > 5 and x < 15  # es correcto en una expresión normal con variables
+
+bmi = np.array([ 21.852, 20.975, 21.75 , 24.747, 21.441]) #creamos un objeto numpy
+bmi > 21 and bmi < 22 # es INCORRECTO CON OBJETOS NUMPY
+np.logical_and(bmi > 21, bmi < 22)  #devuelve: array([True, False, True, False, True], dtype=bool)
+bmi[np.logical_and(bmi > 21, bmi < 22)] # devuelve: array([21.852, 21.75, 21.441])
+
+```
+
+**Sentencias Condicionales:** cambian el flujo de un programa dependiendo del valor de una o varias expresiones, son de la forma:
+if condition :
+expression
+elif condition :
+expression
+else :
+expression
+```python
+z = 3
+if z % 2 == 0 :
+print("z is divisible by 2") # False
+elif z % 3 == 0 :
+print("z is divisible by 3") # True
+else :
+print("z is neither divisible by 2 nor by 3")
+z is divisible by 3
+```
+
+
