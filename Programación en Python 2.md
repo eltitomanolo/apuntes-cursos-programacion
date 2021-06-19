@@ -79,7 +79,7 @@ bmi > 23  # devuelve: ([False, False, False, True, False], dtype=bool)
 bmi[bmi > 23] #devuelve array([ 24.747])
 ```
 
-**Operadores Booleanos:** and, or, not no funcionan con objetos de numpy, para este tipo de elementos hay que utilizar:
+**Operadores Booleanos:** :warning: and, or, not no funcionan con objetos de numpy, para este tipo de elementos hay que utilizar:
 **logical_and()
 logical_or()
 logical_not()**
