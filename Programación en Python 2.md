@@ -125,9 +125,5 @@ brics[brics["area"] > 8] #creamos un subDataFrame (doble corchete convierte la s
 
 np.logical_and(brics["area"] > 8, brics["area"] < 10) # inclusión de varias condiciones unidas por operadores booleanos.
 
-
-
-
-
 ```
-
+### TEMA 4 Loops
