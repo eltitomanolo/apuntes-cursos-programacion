@@ -118,9 +118,16 @@ SA  South_Africa Pretoria 1.221 52.988
 
 import pandas as pd
 brics = pd.read_csv("path/to/brics.csv", index_col = 0) #importamos el dataFrame de un csv
+
 brics["area"] #devuelve una  serie con la columna area # podíamos haber utilizado brics.loc[:,"area"] ó brics.iloc[:,2]
 brics["area"] > 8 #devuelve una serie con los mayores de 8
 brics[brics["area"] > 8] #creamos un subDataFrame (doble corchete convierte la serie en DataFrame)
+
+np.logical_and(brics["area"] > 8, brics["area"] < 10) # inclusión de varias condiciones unidas por operadores booleanos.
+
+
+
+
 
 ```
 
