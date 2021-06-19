@@ -64,13 +64,13 @@ europe['italy'] = data  # Add data to europe under key 'italy'
  A una tabla se asignará a un ** Objeto Dataframe**, y las filas representan observaciones únicas y las columnas las variables, además la primera columna y la primera fila llevan asociadas etiquetas. Podemos crear un Dataframe a partir de un diccionario
  
 ### TEMA 3 Logic, Control Flow and Filtering
-**Operadores de compararación:** Siempre devuelven tipos booleanos True y False. En caso de que los elementos a comparar sean cadenas los comparadores mayor y menos indicarán el orden alfabético. 
-< Strictly less than
-<= Less than or equal
-> Strictly greater than
->= Greater than or equal
-== Equal
-!= Not equal
+**Operadores de compararación:** Siempre devuelven tipos booleanos True y False. En caso de que los elementos a comparar sean cadenas los comparadores mayor y menos indicarán el orden alfabético.  
+< Strictly less than  
+<= Less than or equal  
+> Strictly greater than  
+>= Greater than or equal  
+== Equal  
+!= Not equal  
 
 ```python
 # recordatorio:
