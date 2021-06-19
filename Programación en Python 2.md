@@ -106,5 +106,21 @@ else :
 
 # devuelve:  z is divisible by 3
 ```
+**Filtrado de datos en Pandas** podemos utilizar operadores de comparación y operadores booleanos para hacer una subselección de datos en un DataFrame de Pandas.
+```python
+tenemos el dataFrame: 
+    country  capital   area  population
+BR  Brazil   Brasilia  8.516 200.40
+RU  Russia   Moscow    17.100 143.50
+IN  India    New Delhi 3.286 1252.00
+CH  China    Beijing   9.597 1357.00
+SA  South_Africa Pretoria 1.221 52.988
 
+import pandas as pd
+brics = pd.read_csv("path/to/brics.csv", index_col = 0) #importamos el dataFrame de un csv
+brics["area"] #devuelve una  serie con la columna area # podíamos haber utilizado brics.loc[:,"area"] ó brics.iloc[:,2]
+brics["area"] > 8 #devuelve una serie con los mayores de 8
+brics[brics["area"] > 8] #creamos un subDataFrame (doble corchete convierte la serie en DataFrame)
+
+```
 
