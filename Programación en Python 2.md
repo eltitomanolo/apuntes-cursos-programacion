@@ -65,14 +65,14 @@ europe['italy'] = data  # Add data to europe under key 'italy'
  
 ### TEMA 3 Logic, Control Flow and Filtering
 **Operadores de compararación:** Siempre devuelven tipos booleanos True y False. En caso de que los elementos a comparar sean cadenas los comparadores mayor y menos indicarán el orden alfabético.  
-< Strictly less than  
-<= Less than or equal  
-> Strictly greater than  
->= Greater than or equal  
-== Equal  
-!= Not equal  
-
 ```python
+< #Strictly less than  
+<= #Less than or equal  
+> #Strictly greater than  
+>= #Greater than or equal  
+== #Equal  
+!= #Not equal
+
 # recordatorio:
 bmi = np.array([ 21.852, 20.975, 21.75 , 24.747, 21.441]) #creamos un objeto numpy
 bmi > 23  # devuelve: ([False, False, False, True, False], dtype=bool)
@@ -80,9 +80,9 @@ bmi[bmi > 23] #devuelve array([ 24.747])
 ```
 
 **Operadores Booleanos:** and, or, not no funcionan con objetos de numpy, para este tipo de elementos hay que utilizar:
-logical_and()
+**logical_and()
 logical_or()
-logical_not()
+logical_not()**
 ```python
 x = 12 # variable de ejemplo
 x > 5 and x < 15  # es correcto en una expresión normal con variables
@@ -94,22 +94,17 @@ bmi[np.logical_and(bmi > 21, bmi < 22)] # devuelve: array([21.852, 21.75, 21.441
 
 ```
 
-**Sentencias Condicionales:** cambian el flujo de un programa dependiendo del valor de una o varias expresiones, son de la forma:
-if condition :
-expression
-elif condition :
-expression
-else :
-expression
+**Sentencias Condicionales:** cambian el flujo de un programa dependiendo del valor de una o varias expresiones. Importante poner dos puntos al final de cada expresión condicional e indentar los códigos a ejecutar:
 ```python
 z = 3
-if z % 2 == 0 :
-print("z is divisible by 2") # False
+if z % 2 == 0 :  # importante poner dos puntos tras cada condición y tabular las siguientes expresiones con tab o 4 espacios
+    print("z is divisible by 2") # False
 elif z % 3 == 0 :
-print("z is divisible by 3") # True
+    print("z is divisible by 3") # True
 else :
-print("z is neither divisible by 2 nor by 3")
-z is divisible by 3
+    print("z is neither divisible by 2 nor by 3")
+
+# devuelve:  z is divisible by 3
 ```
 
 
