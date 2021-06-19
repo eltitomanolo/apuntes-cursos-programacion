@@ -88,7 +88,7 @@ x = 12 # variable de ejemplo
 x > 5 and x < 15  # es correcto en una expresión normal con variables
 
 bmi = np.array([ 21.852, 20.975, 21.75 , 24.747, 21.441]) #creamos un objeto numpy
-bmi > 21 and bmi < 22 # es INCORRECTO CON OBJETOS NUMPY
+bmi > 21 and bmi < 22 # :warning: es INCORRECTO CON OBJETOS NUMPY
 np.logical_and(bmi > 21, bmi < 22)  #devuelve: array([True, False, True, False, True], dtype=bool)
 bmi[np.logical_and(bmi > 21, bmi < 22)] # devuelve: array([21.852, 21.75, 21.441])
 
