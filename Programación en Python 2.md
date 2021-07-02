@@ -127,3 +127,80 @@ np.logical_and(brics["area"] > 8, brics["area"] < 10) # inclusión de varias con
 
 ```
 ### TEMA 4 Loops
+**Bucles con While**: hay que asegurarse de que la condición de salida de bucle se va a conseguir en algún momento
+
+```python
+#Bucle básico:
+x = 1
+while x < 4 :
+    print(x)
+    x = x + 1
+    
+#Bucle While combinado con condicionales if elif :
+offset = -6
+
+# Code the while loop
+while offset != 0 :
+    print("correcting...")
+    if offset > 0 :
+      offset = offset -1
+    else : 
+      offset = offset +1    
+    print(offset)
+    
+```
+**Bucles For sobre listas:** Utilizando **enumerate(lista)** genera dos valores en cada iteración: el índice del valor y el valor en sí.
+```python
+#Bucle básico:
+fam = [1.73, 1.68, 1.71, 1.89]
+for height in fam : 
+    print(height)
+   
+# areas list
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+# Change for loop to use enumerate() and update print()
+for index, a in enumerate(areas) :      #utilizamos enumerate para obtener pares tipo: índice del valor y propio valor
+    print('room ' + str(index) + ': ' +str(a))
+    
+# areas list
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+# Code the for loop
+for index, area in enumerate(areas, 1) : # el "1" indica que índice empezará desde el 1 y no desde el 0
+    print("room " + str(index) + ": " + str(area))
+    
+# house list of lists
+house = [["hallway", 11.25],  #interacionamos con listas de listas
+         ["kitchen", 18.0], 
+         ["living room", 20.0], 
+         ["bedroom", 10.75], 
+         ["bathroom", 9.50]]
+         
+# Build a for loop from scratch -----for index, area in enumerate(areas, 1) :
+for index, room in enumerate(house):
+    print('the '+ house[index][0] +' is '+ str(house[index][1]) + ' sqm')
+
+```
+**Bucles For sobre Diccionarios:** Nota: los diccionarios no están ordenados, por definición, por lo que cuando iteractuamos sobre ellos nos podremos encontrar los resultados en cualquier orden.
+```python
+# Definition of dictionary
+europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin',
+          'norway':'oslo', 'italy':'rome', 'poland':'warsaw', 'austria':'vienna' }    
+# Iterate over europe
+for key, value in europe.items(): # hay que utilizar el método: .items()
+    print( 'the capital of ' + key + ' is ' + value)
+
+```
+
+**Bucles For sobre Numpy arrays:** Nota:
+```python
+# Import numpy as np
+import numpy as np
+# For loop over np_height (array con alturas)
+for x in np_height:
+    print(str(x) + ' inches')
+
+# For loop over np_baseball (array con alturas y pesos )
+for y in np.nditer(np_baseball):
+    print (str(y))
+
+```
