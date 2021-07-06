@@ -204,3 +204,30 @@ for y in np.nditer(np_baseball):
     print (str(y))
 
 ```
+**Bucles For sobre Pandas dataframes:** Nota:
+```python
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Iterate over rows of cars
+for lab, row in cars.iterrows():  # vamos a iterar sobre las filas con .iterrows(), utilizando la etiqueta de fila "lab" y los datos "row"
+    print(lab)
+    print(row) #genera una serie Panda, 
+    print(str(row['cars_per_cap']) # si queremos acceder al valor de una columna debemos utilizar el nombre de la columna entre corchetes
+    
+# Bucle Para añadir una columna COUNTRY en mayúsculas (este método espoco eficiente)
+for lab, row in cars.iterrows():
+    cars.loc[lab, 'COUNTRY'] = row['country'].upper()
+    
+# para hacer lo mismo de manera más eficiente usaremos .apply(str.upper) y **así no necesitamos un bucle for**.
+cars['COUNTRY'] = cars['country'].apply(str.upper)
+```
+
+**Números aleatorios:** Nota: se puede resolver un problema de manera analítica, creando una ecuación, o de manera Hacker resolviéndolo 1000 veces para datos aleatorios y ver qué pasa.
+Numpy tiene un **subpaquete llamado "random"** que tiene las funciones seed() y rand() para generar datos aleatorios:
+np.random.rand() genera un dato seuso-aleatorio entre 0 y 1. Si lo introducimos sin semilla Python la elige de manera aleatoria, pero si le metemos el parámetro semilla connp.random.seed(semilla) generará una serie concreta de números en función de ésta. (se utiliza para que otras personas puedan reproducir tu análisis.
+
+```python
+
+```
