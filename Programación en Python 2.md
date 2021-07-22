@@ -224,10 +224,17 @@ for lab, row in cars.iterrows():
 cars['COUNTRY'] = cars['country'].apply(str.upper)
 ```
 
+### TEMA 5 Hackear estadísticas
 **Números aleatorios:** Nota: se puede resolver un problema de manera analítica, creando una ecuación, o de manera Hacker resolviéndolo 1000 veces para datos aleatorios y ver qué pasa.
 Numpy tiene un **subpaquete llamado "random"** que tiene las funciones seed() y rand() para generar datos aleatorios:
-np.random.rand() genera un dato seuso-aleatorio entre 0 y 1. Si lo introducimos sin semilla Python la elige de manera aleatoria, pero si le metemos el parámetro semilla connp.random.seed(semilla) generará una serie concreta de números en función de ésta. (se utiliza para que otras personas puedan reproducir tu análisis.
+np.random.rand() genera un dato seuso-aleatorio entre 0 y 1. Si lo introducimos sin semilla Python la elige de manera aleatoria, pero si le metemos el parámetro semilla con np.random.seed(semilla) generará una serie concreta de números en función de ésta. (se utiliza para que otras personas puedan reproducir tu análisis).
 
 ```python
+import numpy as np
+np.random.rand()      # Pseudo-random flotantes de 0.0 a 1.0
+
+np.random.seed(123)   # Introducimos una semilla para que los números aleatorios se generen en secuancias idénticas para asegurar reproductividad. 
+np.random.rand()      # inicio de la secuencia pseudo aleatoria idéntica a partir de la semilla anterior.
+
 
 ```
