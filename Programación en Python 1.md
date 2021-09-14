@@ -54,7 +54,7 @@ nota: el separador ; se utiliza para poner varios comandos en una sola línea.
 
 Una función es un código reutilizable que realiza una sola tarea y se le puede introducir argumentos de entrada. Todas las funciones utilizadas hasta ahora son *Funciones Integradas* en Python.
 
-**help(funcion)** muestra la ayuda de una función python. Cuando un argumento se muestra entre corchetes indica que es opcional. Cuando un argumento se muestra igualado a algún valor indica que éste es por defecto.
+**help(funcion)** muestra la ayuda de una función build-in o sobre un objeto python. Es interesante cuando se solicita ayuda sobre un objeto te muestra también todos lo métodos asociados a dicho objeto. Cuando un argumento se muestra entre corchetes indica que es opcional. Cuando un argumento se muestra igualado a algún valor indica que éste es por defecto.
 
 **?max** idem del anterior
 
