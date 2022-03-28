@@ -303,7 +303,7 @@ ORDER BY geosize_group;
 Buena explicación en español:  https://diego.com.es/principales-tipos-de-joins-en-sql .
 Las uniones exteriores combinan todos los registros de una tabla con todos los que coincidan en el campo clave de otra. cuando no coincida con ninguno se pone NULL.
 
-**LEFT JOIN**: Coge la tabla completa de la derecha y le agrega las columnas de la tabla de la izquierda que tengan el mismo campo clave, poniendo NULL en los registros no tengan pareja. Si en la tabla de la izquierda hay varios registros que coincide con el mismo campo clave los añade todos repitiendo los valores de la tabla de la izquierda.
+**LEFT JOIN**: Coge la tabla completa de la izquierda y le agrega las columnas de la tabla de la derecha que tengan el mismo campo clave, poniendo NULL en los registros no tengan pareja. Si en la tabla de la derecha hay varios registros que coincide con el mismo campo clave los añade todos repitiendo los valores de la tabla de la izquierda.
 
 ![left_join](https://user-images.githubusercontent.com/32695362/118516046-404f7c00-b736-11eb-98e7-1d03f8806241.png)
 ![LEFT JOIN 2](https://user-images.githubusercontent.com/32695362/118516693-d7b4cf00-b736-11eb-9da8-19f3c1c63148.png)
